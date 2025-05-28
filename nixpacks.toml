@@ -1,10 +1,6 @@
 [phases.setup]
-# Ini adalah bagian kunci untuk PHP 7.4.
-# Kami mencoba menggunakan Nixpkgs versi lama yang masih punya PHP 7.4.
-# HASH ini adalah contoh dari commit Nixpkgs yang mungkin masih memiliki PHP 7.4
-# Jika build gagal, kamu mungkin perlu mencari hash commit Nixpkgs lain
-# dari history sebelum PHP 7.4 dihapus (sekitar sebelum Nov 2022).
-legacyNixPkgs = "https://github.com/NixOS/nixpkgs/archive/5148520bfab61f99fd25fb9ff7bfbb50dad3c9db.tar.gz" # Contoh hash
+# GANTI HASH INI DENGAN YANG LEBIH LAMA DAN PASTI MASIH PUNYA PHP 7.4
+legacyNixPkgs = "https://github.com/NixOS/nixpkgs/archive/f2c41864114f434033f114a904037563065a7f92.tar.gz" # <-- GANTI INI!
 
 packages = [
   "php74",
@@ -19,21 +15,15 @@ packages = [
   # Tambahkan ekstensi PHP 7.4 lain di sini jika ada error build yang mengeluhkannya
 ]
 
-# Dependensi sistem yang mungkin dibutuhkan oleh PHP dan ekstensi.
-# libpq-dev penting untuk pdo_pgsql.
 apt = ["git", "libpq-dev"]
 
 [phases.build]
-# Menginstal dependensi NPM berdasarkan package.json kamu
 commands = ["npm install"]
 
 [phases.postBuild]
-# Menjalankan script "prod" dari package.json kamu untuk kompilasi aset frontend
 commands = ["npm run prod"]
 
 [start]
-# Command untuk menjalankan aplikasi Laravel kamu.
-# Pastikan host 0.0.0.0 dan port diambil dari variabel lingkungan $PORT
 cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
 
 # Konfigurasi jika aplikasi kamu adalah SPA atau menggunakan history mode
