@@ -1,3 +1,24 @@
 [phases.setup]
-nixPkgs = ["php74", "php74Extensions.composer", "php74Extensions.pdo_pgsql", "php74Extensions.gd", "php74Extensions.mbstring", "php74Extensions.openssl", "php74Extensions.curl", "php74Extensions.json", "php74Extensions.zip"]
-apt = ["git", "libpq-dev"]
+# Menggunakan legacyNixPkgs untuk mengakses paket PHP 7.4 yang sudah EOL
+# HASH ini adalah contoh dari commit Nixpkgs yang masih memiliki PHP 7.4
+# Mungkin perlu dicari hash yang lebih spesifik jika ini tidak bekerja
+# Kamu bisa mencoba hash lain dari history Nixpkgs sebelum November 2022.
+legacyNixPkgs = "https://github.com/NixOS/nixpkgs/archive/5148520bfab61f99fd25fb9ff7bfbb50dad3c9db.tar.gz" # Contoh hash
+
+packages = [
+  "php74",
+  "php74Extensions.composer",
+  "php74Extensions.pdo_pgsql",
+  "php74Extensions.gd",
+  "php74Extensions.mbstring",
+  "php74Extensions.openssl",
+  "php74Extensions.curl",
+  "php74Extensions.json",
+  "php74Extensions.zip"
+]
+
+# Tambahkan dependensi sistem jika diperlukan oleh ekstensi PHP
+apt = ["git", "libpq-dev"] # libpq-dev penting untuk pdo_pgsql
+
+[start]
+cmd = "php artisan serve --host 0.0.0.0 --port $PORT" # Sesuaikan command start kamu
