@@ -1,0 +1,3 @@
+[phases.setup]
+nixPkgs = ["php74", "php74Extensions.composer", "php74Extensions.pdo_pgsql", "php74Extensions.gd", "php74Extensions.mbstring", "php74Extensions.openssl", "php74Extensions.curl", "php74Extensions.json", "php74Extensions.zip"]
+apt = ["git", "libpq-dev"]
