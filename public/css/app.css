@@ -1,0 +1,744 @@
+/* Neobrutalism Login CSS - Konsisten dengan Movie Theme */
+
+/* Import fonts untuk konsistensi */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Chakra+Petch:wght@700&display=swap');
+
+/* Variabel CSS yang konsisten dengan tema neobrutalism */
+:root {
+    --neobrutal-primary: #000; /* Black */
+    --neobrutal-secondary: #fff; /* White */
+    --neobrutal-accent-1: #FF00FF; /* Neon Magenta */
+    --neobrutal-accent-2: #00FFFF; /* Cyan */
+    --neobrutal-dark-grey: #333;
+    --neobrutal-light-grey: #eee;
+    --neobrutal-border-thickness: 4px;
+    --neobrutal-shadow-offset: 8px;
+    --animation-speed: 0.1s;
+}
+
+/* Body styling dengan animated background */
+body {
+    background: linear-gradient(135deg, 
+        var(--neobrutal-accent-2) 0%, 
+        var(--neobrutal-accent-1) 25%, 
+        var(--neobrutal-light-grey) 50%, 
+        var(--neobrutal-accent-2) 75%, 
+        var(--neobrutal-accent-1) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    min-height: 100vh;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--neobrutal-dark-grey);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Geometric pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='neopattern' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Crect x='10' y='10' width='20' height='20' fill='%23000000' fill-opacity='0.05'/%3E%3Crect x='60' y='60' width='15' height='15' fill='%23FF00FF' fill-opacity='0.1' transform='rotate(45 67.5 67.5)'/%3E%3Ccircle cx='30' cy='70' r='5' fill='%2300FFFF' fill-opacity='0.08'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23neopattern)'/%3E%3C/svg%3E");
+    animation: patternMove 15s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes patternMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50px, -50px); }
+}
+
+/* Container styling */
+.row {
+    display: flex;
+    align-items: top;
+}
+
+/* Main card styling - Neobrutalism */
+.movie-card {
+    background: var(--neobrutal-secondary);
+    border: var(--neobrutal-border-thickness) solid var(--neobrutal-primary);
+    border-radius: 0; /* Tanpa border-radius untuk neobrutalism */
+    box-shadow: var(--neobrutal-shadow-offset) var(--neobrutal-shadow-offset) 0 var(--neobrutal-primary);
+    transition: all var(--animation-speed) ease-in-out;
+    position: relative;
+    overflow: visible;
+}
+
+.movie-card:hover {
+    transform: translateY(-4px) translateX(-4px);
+    box-shadow: calc(var(--neobrutal-shadow-offset) + 4px) calc(var(--neobrutal-shadow-offset) + 4px) 0 var(--neobrutal-primary);
+}
+
+/* Decorative top stripe */
+.movie-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        var(--neobrutal-accent-1) 0%, 
+        var(--neobrutal-accent-2) 50%, 
+        var(--neobrutal-accent-1) 100%);
+    z-index: 1;
+}
+
+/* Card header styling */
+.card-header {
+    background: var(--neobrutal-accent-1) !important;
+    border-bottom: var(--neobrutal-border-thickness) solid var(--neobrutal-primary) !important;
+    color: var(--neobrutal-primary) !important;
+    font-family: 'Chakra Petch', monospace;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    border-radius: 0 !important;
+}
+
+.card-title {
+    margin: 0;
+    text-shadow: none;
+    color: var(--neobrutal-primary);
+    animation: titleGlitch 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlitch {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-2px); }
+    20% { transform: translateX(2px); }
+    30% { transform: translateX(-1px); }
+    40% { transform: translateX(1px); }
+    50% { transform: translateX(0); }
+}
+
+/* Card body styling */
+.card-body {
+    padding: 2.5rem;
+    position: relative;
+    background: var(--neobrutal-secondary);
+    border-top: none;
+}
+
+/* Form group styling */
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Label styling */
+.form-group label {
+    font-weight: bold;
+    color: var(--neobrutal-primary);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Custom form control styling */
+.custom-form-control {
+    border-radius: 0 !important;
+    border: var(--neobrutal-border-thickness) solid var(--neobrutal-primary) !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    background: var(--neobrutal-secondary) !important;
+    box-shadow: none !important;
+    transition: all var(--animation-speed) ease-in-out !important;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--neobrutal-dark-grey) !important;
+}
+
+.custom-form-control:focus {
+    outline: none !important;
+    border-color: var(--neobrutal-accent-1) !important;
+    box-shadow: var(--neobrutal-shadow-offset) var(--neobrutal-shadow-offset) 0 var(--neobrutal-accent-1) !important;
+    transform: translateY(-2px) translateX(-2px);
+}
+
+.custom-form-control:hover:not(:focus) {
+    transform: translateY(-1px) translateX(-1px);
+    box-shadow: 4px 4px 0 var(--neobrutal-primary) !important;
+}
+
+/* CTA Button styling */
+.cta-button {
+    background: var(--neobrutal-accent-2) !important;
+    border: var(--neobrutal-border-thickness) solid var(--neobrutal-primary) !important;
+    border-radius: 0 !important;
+    color: var(--neobrutal-primary) !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    padding: 1rem 2rem !important;
+    box-shadow: var(--neobrutal-shadow-offset) var(--neobrutal-shadow-offset) 0 var(--neobrutal-primary) !important;
+    transition: all var(--animation-speed) ease-in-out !important;
+    font-family: 'Chakra Petch', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.3), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background: var(--neobrutal-accent-1) !important;
+    color: var(--neobrutal-secondary) !important;
+    transform: translateY(-4px) translateX(-4px);
+    box-shadow: calc(var(--neobrutal-shadow-offset) + 4px) calc(var(--neobrutal-shadow-offset) + 4px) 0 var(--neobrutal-primary) !important;
+}
+
+.cta-button:active {
+    transform: translateY(2px) translateX(2px);
+    box-shadow: 4px 4px 0 var(--neobrutal-primary) !important;
+}
+
+/* Error styling */
+.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: var(--neobrutal-shadow-offset) var(--neobrutal-shadow-offset) 0 #dc3545 !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Success state styling */
+.form-success .custom-form-control {
+    border-color: #28a745 !important;
+    box-shadow: var(--neobrutal-shadow-offset) var(--neobrutal-shadow-offset) 0 #28a745 !important;
+}
+
+/* Loading state */
+.cta-button.loading {
+    pointer-events: none;
+    position: relative;
+    color: transparent !important;
+}
+
+.cta-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--neobrutal-primary);
+    border-radius: 0;
+    animation: neoSpin 1s linear infinite;
+}
+
+@keyframes neoSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Focus-within effects */
+.form-group:focus-within label {
+    color: var(--neobrutal-accent-1);
+    transform: translateY(-2px);
+    transition: all var(--animation-speed) ease;
+}
+
+/* Glitch effect for extra coolness */
+.movie-card.glitch {
+    animation: cardGlitch 0.3s ease-in-out;
+}
+
+@keyframes cardGlitch {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); filter: hue-rotate(90deg); }
+    75% { transform: translateX(5px); filter: hue-rotate(-90deg); }
+}
+
+/* Accessibility improvements */
+.custom-form-control:focus,
+.cta-button:focus {
+    outline: 3px solid var(--neobrutal-accent-2);
+    outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .movie-card {
+        margin: 1rem;
+        box-shadow: 6px 6px 0 var(--neobrutal-primary);
+    }
+    
+    .movie-card:hover {
+        transform: translateY(-2px) translateX(-2px);
+        box-shadow: 8px 8px 0 var(--neobrutal-primary);
+    }
+    
+    .card-body {
+        padding: 2rem 1.5rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .custom-form-control:focus {
+        box-shadow: 6px 6px 0 var(--neobrutal-accent-1) !important;
+    }
+    
+    .cta-button {
+        box-shadow: 6px 6px 0 var(--neobrutal-primary) !important;
+    }
+    
+    .cta-button:hover {
+        box-shadow: 8px 8px 0 var(--neobrutal-primary) !important;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    body::before {
+        display: none;
+    }
+    
+    .row {
+        padding: 1rem 0.5rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+    
+    :root {
+        --neobrutal-shadow-offset: 6px;
+        --neobrutal-border-thickness: 3px;
+    }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1400px) {
+    .card-title {
+        font-size: 2rem;
+    }
+    
+    .movie-card {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --neobrutal-secondary: #1a1a1a;
+        --neobrutal-light-grey: #2a2a2a;
+    }
+    
+    .custom-form-control {
+        background: var(--neobrutal-secondary) !important;
+        color: var(--neobrutal-light-grey) !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --neobrutal-border-thickness: 6px;
+        --neobrutal-shadow-offset: 12px;
+    }
+    
+    .movie-card {
+        border-width: 6px;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    body::before {
+        animation: none;
+    }
+    
+    .card-title {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    body::before {
+        display: none;
+    }
+    
+    .movie-card {
+        box-shadow: none !important;
+        border: 2px solid black !important;
+    }
+}
+/* Badge Star Positioning - Neobrutalism Style */
+
+/* Poster container positioning */
+.poster-container {
+    position: relative;
+    overflow: hidden;
+    height: 380px; /* Sesuai dengan tema neobrutalism */
+    background: var(--neobrutal-light-grey);
+    border-bottom: var(--neobrutal-border-thickness) solid var(--neobrutal-primary);
+}
+
+.poster-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--animation-speed) ease-in-out;
+}
+
+/* Badge positioning di pojok kanan atas */
+.poster-container .position-absolute.top-0.end-0 {
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+    z-index: 15;
+    transform: translateX(0) translateY(0);
+    transition: all var(--animation-speed) ease-in-out;
+}
+
+/* Star badge styling - Neobrutalism */
+.poster-container .badge.bg-warning {
+    background-color: var(--neobrutal-accent-1) !important; /* Neon Magenta */
+    color: var(--neobrutal-primary) !important;
+    border: 2px solid var(--neobrutal-primary) !important;
+    border-radius: 0 !important;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 4px 4px 0 var(--neobrutal-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Star icon styling */
+.poster-container .badge .fas.fa-star {
+    color: var(--neobrutal-accent-2); /* Cyan untuk kontras */
+    margin-right: 0.25rem;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 0 var(--neobrutal-primary);
+}
+
+/* Hover effects */
+.movie-card:hover .poster-container .position-absolute.top-0.end-0 {
+    transform: translateX(-2px) translateY(2px);
+    transition: all var(--animation-speed) ease-in-out;
+}
+
+.movie-card:hover .poster-container .badge.bg-warning {
+    background-color: var(--neobrutal-accent-2) !important; /* Cyan saat hover */
+    box-shadow: 6px 6px 0 var(--neobrutal-primary);
+    transform: scale(1.05);
+}
+
+.movie-card:hover .poster-container .badge .fas.fa-star {
+    color: var(--neobrutal-accent-1); /* Magenta saat hover */
+    animation: starPulse 0.5s ease-in-out;
+}
+
+@keyframes starPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Badge dengan background semi-transparan untuk readability */
+.poster-container .badge.bg-warning::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+/* Efek shine untuk badge */
+.poster-container .badge.bg-warning::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.movie-card:hover .poster-container .badge.bg-warning::after {
+    left: 100%;
+}
+
+/* Badge text positioning */
+.poster-container .badge.bg-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .poster-container .position-absolute.top-0.end-0 {
+        top: 8px !important;
+        right: 8px !important;
+    }
+    
+    .poster-container .badge.bg-warning {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        box-shadow: 3px 3px 0 var(--neobrutal-primary);
+    }
+    
+    .movie-card:hover .poster-container .badge.bg-warning {
+        box-shadow: 4px 4px 0 var(--neobrutal-primary);
+    }
+}
+
+@media (max-width: 576px) {
+    .poster-container .position-absolute.top-0.end-0 {
+        top: 6px !important;
+        right: 6px !important;
+    }
+    
+    .poster-container .badge.bg-warning {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.5rem;
+        box-shadow: 2px 2px 0 var(--neobrutal-primary);
+    }
+    
+    .poster-container .badge .fas.fa-star {
+        font-size: 0.8rem;
+        margin-right: 0.2rem;
+    }
+}
+
+/* Badge alternatif jika ada badge lain */
+.poster-container .position-absolute.top-0.start-0 {
+    top: 10px !important;
+    left: 10px !important;
+    right: auto !important;
+    z-index: 14; /* Sedikit lebih rendah dari rating badge */
+}
+
+/* Badge favorite styling (jika ada) */
+.poster-container .badge.bg-primary {
+    background-color: var(--neobrutal-accent-2) !important; /* Cyan */
+    color: var(--neobrutal-primary) !important;
+    border: 2px solid var(--neobrutal-primary) !important;
+    border-radius: 0 !important;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 4px 4px 0 var(--neobrutal-primary);
+}
+
+/* Badge type film (jika ada) - posisi di bawah favorite */
+.poster-container .badge.movie-type {
+    position: absolute;
+    top: 60px !important;
+    left: 10px !important;
+    background-color: var(--neobrutal-primary) !important;
+    color: var(--neobrutal-secondary) !important;
+    border: 2px solid var(--neobrutal-secondary) !important;
+    z-index: 13;
+}
+
+/* Memastikan badge tidak overlap dengan controls lain */
+.poster-container .position-absolute {
+    pointer-events: auto;
+}
+
+/* Efek glitch pada badge saat hover card */
+.movie-card:hover .poster-container .badge {
+    animation: badgeGlitch 0.3s ease-in-out;
+}
+
+@keyframes badgeGlitch {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-1px); filter: hue-rotate(45deg); }
+    75% { transform: translateX(1px); filter: hue-rotate(-45deg); }
+}
+
+/* Badge untuk rating tinggi (special styling) */
+.poster-container .badge.high-rating {
+    background-color: var(--neobrutal-accent-1) !important;
+    color: var(--neobrutal-secondary) !important;
+    animation: highRatingPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes highRatingPulse {
+    0% { box-shadow: 4px 4px 0 var(--neobrutal-primary); }
+    100% { box-shadow: 6px 6px 0 var(--neobrutal-primary), 0 0 15px rgba(255, 0, 255, 0.3); }
+}
+
+/* Badge untuk rating rendah */
+.poster-container .badge.low-rating {
+    background-color: var(--neobrutal-dark-grey) !important;
+    color: var(--neobrutal-light-grey) !important;
+    opacity: 0.8;
+}
+
+/* Accessibility improvements */
+.poster-container .badge {
+    cursor: default;
+    user-select: none;
+}
+
+.poster-container .badge:focus {
+    outline: 2px solid var(--neobrutal-accent-2);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .poster-container .badge {
+        box-shadow: none !important;
+        border: 1px solid black !important;
+        background: white !important;
+        color: black !important;
+    }
+}
+/* Dalam file app.css atau file CSS utama Anda */
+
+/* --- Pagination Styling (Neobrutalism) --- */
+.neobrutal-pagination .page-item .page-link {
+    border-radius: 0 !important;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+    border: var(--neobrutal-border-thickness) solid var(--neobrutal-primary);
+    color: var(--neobrutal-primary);
+    background-color: var(--neobrutal-secondary);
+    box-shadow: 2px 2px 0 var(--neobrutal-primary); /* Shadow kecil */
+    margin: 0 4px; /* Jarak antar tombol */
+    padding: 0.75rem 1rem;
+    text-transform: uppercase;
+}
+
+.neobrutal-pagination .page-item .page-link:hover {
+    background-color: var(--neobrutal-accent-2); /* Cyan */
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 4px 4px 0 var(--neobrutal-primary); /* Shadow lebih besar saat hover */
+}
+
+.neobrutal-pagination .page-item.active .page-link {
+    background-color: var(--neobrutal-accent-1) !important; /* Neon Magenta untuk active */
+    color: var(--neobrutal-primary) !important;
+    border-color: var(--neobrutal-primary) !important;
+    box-shadow: 2px 2px 0 var(--neobrutal-primary);
+}
+
+.neobrutal-pagination .page-item.disabled .page-link {
+    background-color: var(--neobrutal-light-grey) !important;
+    color: var(--neobrutal-dark-grey) !important;
+    border-color: var(--neobrutal-primary) !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Penyesuaian untuk Bootstrap input-group */
+.input-group-text {
+    border-radius: 0 !important; /* Pastikan sudut tajam */
+}
+
+/* Pastikan section-title terlihat bagus */
+.section-title {
+    position: relative;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-weight: bold;
+    color: var(--neobrutal-primary);
+    margin-top: 3rem;
+    margin-bottom: 2rem !important;
+    text-transform: uppercase;
+    font-family: 'Roboto Mono', monospace; /* Gunakan Roboto Mono untuk judul umum */
+    font-size: 1.8rem;
+}
+
+.section-title span {
+    background: var(--neobrutal-light-grey);
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+    border: var(--neobrutal-border-thickness) solid var(--neobrutal-primary);
+    box-shadow: 6px 6px 0 var(--neobrutal-primary);
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: var(--neobrutal-border-thickness);
+    background: var(--neobrutal-primary);
+    z-index: 0;
+}
