@@ -245,8 +245,9 @@ Berikut adalah beberapa *command* `php artisan` yang akan sangat membantu Anda s
 
 ## ⚠️ Pastikan Lingkungan Lokal Anda
 
-Karena Anda tidak menggunakan Docker, Anda bertanggung jawab penuh atas instalasi dan konfigurasi *software* di sistem operasi Anda:
+Karena Kita tidak menggunakan Docker, Kita bertanggung jawab penuh atas instalasi dan konfigurasi *software* di sistem operasi kita:
 
   * **Instalasi PHP 7.4**: Pastikan PHP 7.4 terinstal dengan benar.
+  * **LARAGON**: Pastikan Laragon memakai PHP 7.4 dan menjalankannya.
   * **Ekstensi PHP yang Aktif**: Verifikasi ekstensi **`pdo_pgsql`** dan ekstensi Laravel lainnya (seperti `mbstring`, `openssl`, `json`, `curl`, `gd`, `fileinfo`) sudah aktif di file `php.ini` Anda. Anda mungkin perlu menginstal paket tambahan (misal: `sudo apt install php7.4-pgsql` di Ubuntu) dan me-restart *web server* atau PHP-FPM.
   * **PostgreSQL Client**: Memiliki `psql` (command-line client PostgreSQL) secara lokal dapat sangat membantu untuk *debugging* koneksi atau interaksi langsung dengan database Supabase.
